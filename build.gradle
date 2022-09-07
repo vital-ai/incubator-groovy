@@ -19,14 +19,20 @@
 buildscript {
     repositories {
         jcenter()
+
+	maven { url "https://repo.spring.io/plugins-release" } 
+
+
+	maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
         maven {
-            name 'Bintray Asciidoctor repo'
-            url 'http://dl.bintray.com/content/aalmiray/asciidoctor'
+            url 'https://plugins.gradle.org/m2/'
         }
-        maven{
-            name 'Bintray Javadoc Hotfix repo'
-            url 'http://dl.bintray.com/melix/gradle-javadoc-hotfix-plugin'
+        maven {
+            url 'https://jitpack.io'
         }
+
     }
 
     dependencies {
@@ -62,7 +68,21 @@ allprojects {
     version = groovyVersion
     repositories {
         jcenter()
-        maven { url 'http://dl.bintray.com/melix/thirdparty-apache' } // openbeans
+       
+	mavenCentral()
+
+
+	maven { url "https://repo.spring.io/plugins-release" } 
+
+	maven {
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+        maven {
+            url 'https://jitpack.io'
+        }
     }
 
     apply plugin: 'groovy'
@@ -140,7 +160,7 @@ ext {
     log4jVersion = '1.2.17'
     log4j2Version = '2.1'
     luceneVersion = '4.7.2'
-    openbeansVersion = '1.0'
+    openbeansVersion = '1.0.2'
     openejbVersion = '1.0'
     qdoxVersion = '1.12.1'
     slf4jVersion = '1.7.10'
@@ -165,7 +185,7 @@ dependencies {
         exclude(group: 'jmock', module: 'jmock')
         exclude(group: 'xmlpull', module: 'xmlpull')
     }
-    compile "com.googlecode:openbeans:$openbeansVersion"
+    compile "me.champeau.openbeans:openbeans:$openbeansVersion"
     compile "org.fusesource.jansi:jansi:$jansiVersion"
     compile("org.apache.ivy:ivy:$ivyVersion") {
         transitive = false
